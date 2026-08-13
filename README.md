@@ -1,51 +1,98 @@
-# 🌐 Personal Web Portfolio - ITS Internship Project
+# 🌐 Personal Web Portfolio
 
-A responsive and modern personal portfolio website built from scratch during my web development internship program at **Institut Teknologi Sepuluh Nopember (ITS)**. This project showcases my skills, experience, and projects with a clean custom user interface.
+A modern and responsive personal portfolio website built using PHP, HTML, CSS, and JavaScript.
+
+This website showcases personal information, skills, projects, and provides a contact form for visitors to get in touch. The interface is designed with a clean layout, smooth animations, and a fully responsive user experience across all devices.
 
 ---
 
-## 🚀 Features
+## ✨ Features
 
-* **Custom Responsive Navigation:** Fixed-top sleek navbar that stays crisp on both Desktop and Mobile devices.
-* **Interactive UI:** Dynamic typing animation effect on the hero section using pure CSS keyframes.
-* **Sleek Custom Cards:** Dedicated grid showcase for skills and pages with smooth hover transformations.
-* **Contact/Hire System:** Integrated form structure ready to connect with MySQL database.
-* **Fully Responsive:** Handcrafted CSS media queries optimized for mobile inspect tools.
+- 🏠 Home / Landing Page
+- 👤 About Me Section
+- 💻 Skills Showcase
+- 📂 Projects Portfolio
+- 📞 Contact Form
+- 🎨 Modern UI Design
+- ⚡ Smooth Animations
+- 📱 Fully Responsive Layout
+- 🌙 Clean User Experience
 
 ---
 
 ## 🛠️ Tech Stack
 
-* **Backend:** PHP (Native)
-* **Frontend:** HTML5, CSS3 (Custom Flexbox, Keyframes Animation)
-* **Database:** MySQL
-* **Development Environment:** Laragon & HeidiSQL
+- PHP (Native)
+- MySQL
+- HTML5
+- CSS3
+- JavaScript
+- Bootstrap
+- Laragon
+- HeidiSQL
 
 ---
 
-## ⚙️ Installation & Local Setup
+## 📁 Project Structure
 
-To run this project locally using **Laragon**, follow these steps:
+```text
+Portfolio/
+│
+├── index.php
+├── about.php
+├── projects.php
+├── contact.php
+├── config.php
+├── style.css
+├── script.js
+├── assets/
+│   ├── images/
+│   ├── icons/
+│   └── uploads/
+│
+├── database/
+│   └── portfolio.sql
+│
+└── README.md
+```
 
-### 1. Clone the Repository
-Clone this repository into your Laragon's local server directory (usually `C:\laragon\www\`):
+---
+
+## 🚀 Installation & Local Setup
+
+### 1. Clone Repository
+
 ```bash
-cd C:\laragon\www
-git clone [https://github.com/syfrkngl/Portfolio.git]
-2. Database Migration (Setup)
-Since this is a Native PHP project, you can easily migrate the structure using HeidiSQL or phpMyAdmin via Laragon:
+git clone https://github.com/syifarizkaangeli/Portfolio-Basic-CRUD.git
+```
 
-Open Laragon and click Start All.
+Or download the ZIP file and extract it into:
 
-Click the Database button to launch HeidiSQL (or go to http://localhost/phpmyadmin/).
+```text
+C:\laragon\www\
+```
 
-Create a new database named portfolio.
+---
 
-Open the Query tab or Import menu, paste the SQL schema for your tables (e.g., kontak table), and execute (F9).
+### 2. Create Database
 
-Example SQL Schema:
+Open:
 
-SQL
+```text
+http://localhost/phpmyadmin
+```
+
+Create a database named:
+
+```text
+portfolio
+```
+
+Import the SQL file if available.
+
+Example table structure:
+
+```sql
 CREATE TABLE IF NOT EXISTS kontak (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nama VARCHAR(255) NOT NULL,
@@ -53,15 +100,147 @@ CREATE TABLE IF NOT EXISTS kontak (
     pesan TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-3. Run the Project
-Open your favorite browser and access the local server domain created automatically by Laragon:
+```
 
-Plaintext
+---
+
+### 3. Run the Project
+
+Start:
+
+- Apache
+- MySQL
+
+Then open:
+
+```text
 http://localhost/Portfolio/
-📸 Preview & Testing Mobile Responsiveness
-You can easily test the mobile responsiveness by right-clicking on the webpage -> Inspect -> toggle the Device Toolbar (Ctrl+Shift+M) to view the auto-centered mobile navbar layout.
+```
 
-👨‍💻 Internship Identity
-Role: Web Developer Intern
+---
 
-Institution: Institut Teknologi Sepuluh Nopember (ITS)
+## 📄 Main Sections
+
+### 🏠 Home
+
+Displays:
+
+- Introduction
+- Personal branding
+- Call-to-action buttons
+
+### 👤 About
+
+Displays:
+
+- Personal profile
+- Background information
+- Career objectives
+
+### 💻 Skills
+
+Displays:
+
+- Technical skills
+- Tools and technologies
+
+### 📂 Projects
+
+Displays:
+
+- Portfolio projects
+- Project descriptions
+- Technologies used
+
+### 📞 Contact
+
+Displays:
+
+- Contact form
+- Visitor message submission
+
+---
+
+## 🗄️ Database
+
+Database:
+
+```text
+portfolio
+```
+
+Example Table:
+
+```text
+kontak
+```
+
+| Column | Description |
+|----------|------------|
+| id | Message ID |
+| nama | Sender Name |
+| email | Sender Email |
+| pesan | Message Content |
+| created_at | Created Date |
+
+---
+
+## 🔐 Security
+
+This project implements:
+
+- PDO Prepared Statements
+- Form Validation
+- Input Sanitization
+- Output Escaping
+
+These practices help reduce risks such as:
+
+- SQL Injection
+- Cross-Site Scripting (XSS)
+- Invalid User Input
+
+---
+
+## 📱 Responsive Design
+
+Optimized for:
+
+- Desktop
+- Laptop
+- Tablet
+- Mobile Devices
+
+Features:
+
+- Responsive navigation bar
+- Flexible layouts
+- Mobile-friendly interface
+
+---
+
+## 📸 Preview
+
+You can test responsiveness using your browser:
+
+1. Right Click → Inspect
+2. Toggle Device Toolbar (`Ctrl + Shift + M`)
+3. Select a mobile device size
+
+---
+
+## 📄 License
+
+This project was created for learning, portfolio, and web development practice purposes.
+
+Feel free to use, modify, and improve it for personal or educational projects.
+
+### .gitignore
+
+```gitignore
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+```
