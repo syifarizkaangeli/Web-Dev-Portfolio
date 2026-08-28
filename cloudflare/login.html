@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>regrist.site</title>
+    <title>login.site</title>
     <link rel="stylesheet" href="auth.css">
 </head>
 <body>
@@ -13,20 +13,18 @@
     <div class="auth-card">
 
         <p class="eyebrow">ACCOUNT</p>
-        <h1>Registrasi Pengguna</h1>
-        <p class="auth-subtitle">Buat akun admin baru.</p>
+        <h1>Login Pengguna</h1>
 
-        <form id="registerForm">
-            <input type="text" id="name" placeholder="Masukkan Nama Lengkap" required>
+        <form id="loginForm">
             <input type="email" id="email" placeholder="Masukkan alamat email" required>
-            <input type="password" id="password" placeholder="Masukkan kata sandi (min. 6 karakter)" minlength="6" required>
+            <input type="password" id="password" placeholder="Masukkan kata sandi" required>
 
-            <button type="submit" class="btn primary">Daftar</button>
+            <button type="submit" class="btn primary">Masuk</button>
 
             <p id="status"></p>
         </form>
 
-        <p class="auth-link">Sudah memiliki akun? <a href="/login.html">Login.</a></p>
+        <p class="auth-link">Belum memiliki akun? <a href="/regrister.html">Regristasi sekarang.</a></p>
 
     </div>
 
@@ -34,20 +32,19 @@
 
 <script>
 
-document.getElementById("registerForm").addEventListener("submit", async (e) => {
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
     e.preventDefault();
 
     const status = document.getElementById("status");
-    status.textContent = "Mendaftarkan...";
+    status.textContent = "Memproses...";
 
     try {
 
-        const response = await fetch("/api/register", {
+        const response = await fetch("/api/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                name: document.getElementById("name").value,
                 email: document.getElementById("email").value,
                 password: document.getElementById("password").value
             })
@@ -59,11 +56,13 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
             throw new Error(result.error);
         }
 
-        status.textContent = "Registrasi berhasil! Mengalihkan...";
+        localStorage.setItem("portfolio_token", result.token);
+
+        status.textContent = "Login berhasil. Mengalihkan...";
 
         setTimeout(() => {
-            window.location.href = "/login.html";
-        }, 800);
+            window.location.href = "/dashboard.html";
+        }, 600);
 
     } catch (error) {
         status.textContent = error.message;

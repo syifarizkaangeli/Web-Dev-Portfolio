@@ -137,28 +137,27 @@ export default {
             }
 
 
-            /*
-             * NOTE:
-             * Untuk production, password sebaiknya
-             * di-hash menggunakan Web Crypto.
-             */
+            const salt =
+                crypto.randomUUID();
 
             const passwordHash =
                 await hashPassword(
-                    body.password
+                    body.password,
+                    salt
                 );
 
 
             await env.DB
                 .prepare(`
                     INSERT INTO users
-                    (name, email, password_hash)
-                    VALUES (?, ?, ?)
+                    (name, email, password_hash, password_salt)
+                    VALUES (?, ?, ?, ?)
                 `)
                 .bind(
                     body.name.trim(),
                     email,
-                    passwordHash
+                    passwordHash,
+                    salt
                 )
                 .run();
 
@@ -206,7 +205,8 @@ export default {
                             id,
                             name,
                             email,
-                            password_hash
+                            password_hash,
+                            password_salt
                         FROM users
                         WHERE email = ?
                         LIMIT 1
@@ -226,7 +226,8 @@ export default {
             const valid =
                 await verifyPassword(
                     body.password,
-                    user.password_hash
+                    user.password_hash,
+                    user.password_salt
                 );
 
             if (!valid) {
@@ -458,13 +459,16 @@ export default {
 
 /*
  * PASSWORD HASH
+ * Setiap user punya salt sendiri (disimpan di kolom
+ * password_salt) supaya dua user dengan password sama
+ * tetap punya hash yang berbeda.
  */
 
-async function hashPassword(password) {
+async function hashPassword(password, salt) {
 
     const data =
         new TextEncoder()
-            .encode(password);
+            .encode(salt + password);
 
     const hash =
         await crypto.subtle.digest(
@@ -485,11 +489,12 @@ async function hashPassword(password) {
 
 async function verifyPassword(
     password,
-    hash
+    hash,
+    salt
 ) {
 
     const newHash =
-        await hashPassword(password);
+        await hashPassword(password, salt);
 
     return newHash === hash;
 

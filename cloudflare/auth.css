@@ -10,7 +10,7 @@ body{
     box-sizing: border-box;
 }
 
-.hire-page{
+.auth-page{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,18 +19,18 @@ body{
     min-height: auto;
 }
 
-.hire-card{
+.auth-card{
     background-color: #f9f9f9;
-    padding: 30px;
+    padding: 50px 40px;
     border-radius: 10px;
     box-shadow: 0 0 7px rgb(0, 0, 0);
     width: 100%;
-    max-width: 500px;
+    max-width: 450px;
     color: #1a1717;
     box-sizing: border-box;
 }
 
-.hire-card .eyebrow{
+.auth-card .eyebrow{
     text-align: center;
     display: block;
     color: #460404;
@@ -40,31 +40,31 @@ body{
     margin-bottom: 8px;
 }
 
-.hire-card h1{
+.auth-card h1{
     text-align: center;
-    font-size: 28px;
+    margin-top: 2px;
+    font-size: 30px;
     color: #1a1717;
+}
+
+.auth-subtitle{
+    text-align: center;
+    color: #555;
     margin-bottom: 15px;
 }
 
-.hire-card > p:not(.eyebrow){
-    text-align: center;
-    color: #555;
-    margin-bottom: 20px;
-}
-
-#hireForm{
+.auth-card form{
     display: flex;
     flex-direction: column;
 }
 
-input[type="text"],
-input[type="email"],
-textarea{
+.auth-card input[type="text"],
+.auth-card input[type="email"],
+.auth-card input[type="password"],
+.auth-card .btn.primary{
     width: 100%;
     padding: 12px;
-    margin-top: 5px;
-    margin-bottom: 15px;
+    margin: 10px 0;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
@@ -75,24 +75,14 @@ textarea{
     font-family: inherit;
 }
 
-textarea{
-    height: 150px;
-}
-
-.btn.primary{
-    width: 100%;
-    padding: 12px;
-    border: none;
-    background-color: #460404;
+.auth-card .btn.primary{
     color: white;
-    border-radius: 4px;
+    background-color: #460404;
+    border: none;
     cursor: pointer;
-    font-size: 16px;
-    text-align: center;
-    font-family: inherit;
 }
 
-.btn.primary:hover{
+.auth-card .btn.primary:hover{
     background-color: #000000;
 }
 
@@ -100,18 +90,25 @@ textarea{
     text-align: center;
     color: #460404;
     font-weight: bold;
-    margin-top: 15px;
+}
+
+.auth-link{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.auth-link a{
+    color: #0000FF;
+    text-decoration: none;
 }
 
 @media (max-width: 600px){
-    .hire-card{
-        padding: 20px;
+    .auth-card{
+        padding: 30px 20px;
     }
 
-    input[type="text"],
-    input[type="email"],
-    textarea,
-    .btn.primary{
+    .auth-card input,
+    .auth-card .btn.primary{
         font-size: 15px;
     }
 }

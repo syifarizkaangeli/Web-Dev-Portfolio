@@ -3,9 +3,13 @@ CREATE TABLE IF NOT EXISTS users (
     name TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
     password_hash TEXT NOT NULL,
+    password_salt TEXT NOT NULL,
     token TEXT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_users_email ON users (email);
+CREATE INDEX IF NOT EXISTS idx_users_token ON users (token);
 
 
 CREATE TABLE IF NOT EXISTS kontak (
@@ -15,6 +19,8 @@ CREATE TABLE IF NOT EXISTS kontak (
     pesan TEXT NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE INDEX IF NOT EXISTS idx_kontak_created_at ON kontak (created_at);
 
 
 CREATE TABLE IF NOT EXISTS hire (
@@ -26,6 +32,8 @@ CREATE TABLE IF NOT EXISTS hire (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE INDEX IF NOT EXISTS idx_hire_created_at ON hire (created_at);
+
 
 CREATE TABLE IF NOT EXISTS projects (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -36,20 +44,15 @@ CREATE TABLE IF NOT EXISTS projects (
 );
 
 
-INSERT INTO projects
-(title, description, technology)
-VALUES
-(
+INSERT INTO projects (title, description, technology)
+VALUES (
     'Portfolio Website',
     'Website portfolio personal modern dan responsive.',
     'HTML, CSS, JavaScript'
 );
 
-
-INSERT INTO projects
-(title, description, technology)
-VALUES
-(
+INSERT INTO projects (title, description, technology)
+VALUES (
     'Cashier System',
     'Sistem kasir berbasis web.',
     'JavaScript, Cloudflare Workers, D1'
