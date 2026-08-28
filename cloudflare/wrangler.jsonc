@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "web-dev-portfolio",
+  "main": "cloudflare/worker.js",
+  "compatibility_date": "2026-08-28",
+
+  "assets": {
+    "directory": "./cloudflare"
+  },
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "portfolio-db",
+      "database_id": "86618fd6-d75d-4f73-8581-e1745021a7fc"
+    }
+  ]
+}

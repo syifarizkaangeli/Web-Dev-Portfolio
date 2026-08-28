@@ -1,0 +1,47 @@
+.hire-page {
+    min-height: calc(100vh - 72px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 50px 7%;
+}
+
+.hire-card {
+    width: min(700px, 100%);
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
+
+    padding: 40px;
+
+    box-shadow: 0 30px 90px rgba(0,0,0,.35);
+}
+
+.hire-card h1 {
+    font-size: 48px;
+    line-height: 1.1;
+
+    margin-bottom: 15px;
+}
+
+.hire-card > p:not(.eyebrow) {
+    color: var(--muted);
+    margin-bottom: 30px;
+}
+
+@media(max-width:600px) {
+
+    .hire-card {
+        padding: 25px;
+    }
+
+    .hire-card h1 {
+        font-size: 34px;
+    }
+
+}

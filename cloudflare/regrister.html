@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Register - Portfolio</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a href="/" class="logo">
+        Portfolio<span>.</span>
+    </a>
+
+</header>
+
+
+<main class="auth-page">
+
+    <div class="auth-card">
+
+        <p class="eyebrow">ACCOUNT</p>
+
+        <h1>Register</h1>
+
+        <p class="auth-subtitle">
+            Buat akun admin baru.
+        </p>
+
+        <form id="registerForm">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Nama"
+                required
+            >
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Email"
+                required
+            >
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Password minimal 6 karakter"
+                minlength="6"
+                required
+            >
+
+            <button class="btn primary">
+                Register
+            </button>
+
+            <p id="status"></p>
+
+        </form>
+
+        <p class="auth-link">
+            Sudah punya akun?
+            <a href="/login.html">Login</a>
+        </p>
+
+    </div>
+
+</main>
+
+
+<script>
+
+document
+    .getElementById("registerForm")
+    .addEventListener("submit", async (e) => {
+
+        e.preventDefault();
+
+        const status =
+            document.getElementById("status");
+
+        status.textContent = "Mendaftarkan...";
+
+        try {
+
+            const response = await fetch(
+                "/api/register",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        name:
+                            document.getElementById("name").value,
+
+                        email:
+                            document.getElementById("email").value,
+
+                        password:
+                            document.getElementById("password").value
+
+                    })
+                }
+            );
+
+            const result =
+                await response.json();
+
+            if (!response.ok) {
+                throw new Error(result.error);
+            }
+
+            status.textContent =
+                "Register berhasil. Mengalihkan...";
+
+            setTimeout(() => {
+                window.location.href =
+                    "/login.html";
+            }, 800);
+
+        } catch (error) {
+
+            status.textContent =
+                error.message;
+
+        }
+
+    });
+
+</script>
+
+</body>
+</html>

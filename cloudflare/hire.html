@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Hire Me</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="hire.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a href="/" class="logo">
+        Portfolio<span>.</span>
+    </a>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/login.html">Login</a>
+    </nav>
+
+</header>
+
+
+<main class="hire-page">
+
+    <div class="hire-card">
+
+        <p class="eyebrow">
+            WORK WITH ME
+        </p>
+
+        <h1>
+            Let's build something.
+        </h1>
+
+        <p>
+            Jelaskan project yang ingin kamu buat.
+            Saya akan menghubungi kamu melalui email.
+        </p>
+
+
+        <form id="hireForm">
+
+            <input
+                id="name"
+                type="text"
+                placeholder="Nama"
+                required
+            >
+
+            <input
+                id="email"
+                type="email"
+                placeholder="Email"
+                required
+            >
+
+            <input
+                id="project"
+                type="text"
+                placeholder="Nama project"
+                required
+            >
+
+            <textarea
+                id="message"
+                placeholder="Ceritakan kebutuhan project..."
+                required
+            ></textarea>
+
+            <button class="btn primary">
+                Kirim Request
+            </button>
+
+            <p id="status"></p>
+
+        </form>
+
+    </div>
+
+</main>
+
+
+<script src="hire.js"></script>
+
+</body>
+</html>
